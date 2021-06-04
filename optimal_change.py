@@ -6,7 +6,6 @@
 def optimal_change(amount_owed, amount_paid):
 
     # verify both inputs are greater than zero
-#change this to try except if I have time
 
     if amount_owed < 0 or amount_paid < 0:
         return "Invalid inputs - amount less than zero."
@@ -23,7 +22,7 @@ def optimal_change(amount_owed, amount_paid):
 # IF AMOUNT_PAID < AMOUNT_OWED it returns None
 # NOTE: I noticed rounding errors in floating point % floating point
 # and floating point +- integer
-# so amount_owed and amount_paid are *100 so calculations are stritctly in integers
+# so amount_owed and amount_paid are *100 so calculations are strictly in integers
 
 def determine_change(amount_owed, amount_paid):
     # these amounts are all *100 from monetary amounts and represent
