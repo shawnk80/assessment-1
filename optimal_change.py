@@ -22,17 +22,32 @@ def optimal_change(amount_owed, amount_paid):
 # [DENOMINATION, AMOUNT] format
 # If no change is DUE (AMOUNT_PAID = AMOUNT_OWED) it returns []
 # IF AMOUNT_PAID < AMOUNT_OWED it returns None
+# NOTE: I noticed rounding errors in floating point % floating point
+# so amount_owed and amount_paid are *100 so calculations are in integers
 
 def determine_change(amount_owed, amount_paid):
+    # these amounts are all *100 from monetary amounts and represent
+    # the correspoding currency amounts in order
+    denomination_list = [10000, 5000, 2000, 1000, 500, 100, 25, 10, 5, 1]
+    change = (amount_paid - amount_owed) * 100
+    #this store the change amount broken down by denomination
+    change_list = []
     # case were no change is owed
-    if amount_paid == amount_owed:
+    if change == 0:
         return []
     
     # case where more money is owed
-    if amount_paid < amount_owed:
+    if change < 0:
         return None
 
-    return []
+    # case where change is owed, check the amount of each
+    # of each denomination owed and add it to change_list
+    for index, amount in enumerate(denomination_list):
+        number_of_denom = change // amount
+        change_list.append(number_of_denom)
+        change -= number_of_denom * amount
+
+    return change_list
 
 
 # PRINT_CHANGE takes an array of elements format [DENOMINATION, AMOUNT]
