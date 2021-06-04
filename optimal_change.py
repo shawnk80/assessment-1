@@ -8,7 +8,7 @@ def optimal_change(amount_owed, amount_paid):
     # verify both inputs are greater than zero
 
     if amount_owed < 0 or amount_paid < 0:
-        return "Invalid inputs - amount less than zero."
+        return "Invalid input(s) - amount less than zero."
 
     optimal_change_list = determine_change(amount_owed, amount_paid)
 
