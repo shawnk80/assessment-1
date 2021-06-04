@@ -56,8 +56,10 @@ def determine_change(amount_owed, amount_paid):
 # If no change is due it returns "We're even steven."
 # If money is still owed (IF AMOUNT_PAID < AMOUNT_OWED) it returns 
 # "You owe more money."
-# The function iterates over the list and appends the correct denomination text
+# The function iterates over the list and calls  CHANGE_STRING to get the 
+# denomination text to append to the OUTPUT_CHANGE_STR
 # to the amount owed from CHANGE_LIST for that denomination
+# 
 
 def print_change(change_list, amount_owed, amount_paid):
     # format amount_owed and amount_paid so they always show 2 decimal places
@@ -93,7 +95,7 @@ def print_change(change_list, amount_owed, amount_paid):
 
 
 # change string takes in two arguments - the DENOMINATION_INDEX and AMOUNT
-# denomination indices map to their index in DENOM_STR_LIST
+# denomination indices correspond to their index in DENOM_STR_LIST
 # CHANGE_STRING returns a string of the format f"{amount} {denom_str}{'s' if AMOUNT > 1 else ''}"
 def change_string(denomination_index, amount):
 
