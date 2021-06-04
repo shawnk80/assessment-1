@@ -16,8 +16,9 @@ def optimal_change(amount_owed, amount_paid):
     
     return optimal_change_str
 
-# DETERMINE_CHANGE returns a list of OPTIMAL_CHANGE with each element in
-# [DENOMINATION, AMOUNT] format
+# DETERMINE_CHANGE returns a list of OPTIMAL_CHANGE with change amount in
+# CHANGE_LIST, where CHANGE_LIST is indexed according to the format:
+# [$100, $50, $20, $10, $5, $1, $.25, $.10, $.05, $.01]
 # If no change is DUE (AMOUNT_PAID = AMOUNT_OWED) it returns []
 # IF AMOUNT_PAID < AMOUNT_OWED it returns None
 # NOTE: I noticed rounding errors in floating point % floating point
@@ -41,7 +42,7 @@ def determine_change(amount_owed, amount_paid):
         return None
 
     # case where change is owed, check the amount of each
-    # of each denomination owed and add it to change_list
+    # denomination owed and add it to change_list
     for index, amount in enumerate(denomination_list):
         number_of_denom = int(change // amount)
         change_list.append(number_of_denom)
@@ -52,10 +53,10 @@ def determine_change(amount_owed, amount_paid):
 
 # PRINT_CHANGE takes an array of elements format [DENOMINATION, AMOUNT]
 # and returns a string CHANGE_STR stating the optimal change
-# if no change is due it returns "We're even steven."
-# if money is still owed (IF AMOUNT_PAID < AMOUNT_OWED) it returns 
+# If no change is due it returns "We're even steven."
+# If money is still owed (IF AMOUNT_PAID < AMOUNT_OWED) it returns 
 # "You owe more money."
-# iterates over the list and appends the correct denomination text
+# The function iterates over the list and appends the correct denomination text
 # to the amount owed from CHANGE_LIST for that denomination
 
 def print_change(change_list, amount_owed, amount_paid):
@@ -93,7 +94,7 @@ def print_change(change_list, amount_owed, amount_paid):
 
 # change string takes in two arguments - the DENOMINATION_INDEX and AMOUNT
 # denomination indices map to their index in DENOM_STR_LIST
-# CHANGE_STRING returns a string of the format f"{amount} {denom_str}?"s"}
+# CHANGE_STRING returns a string of the format f"{amount} {denom_str}{'s' if AMOUNT > 1 else ''}"
 def change_string(denomination_index, amount):
 
     # penny is a special case as the plural of penny is pennies
