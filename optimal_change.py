@@ -1,16 +1,10 @@
-# add numpy library to check the number of non-zero elements in a list
-# import numpy as np
-
 # Input to optimal change is two numbers AMOUNT_PAID and AMOUNT_OWED
 # Output is a string stating the optimal change (fewest number of bills and coins)
 # OPTIMAL_CHANGE calls two sub functions DETERMINE_CHANGE and PRINT_CHANGE
 
 
 def optimal_change(amount_owed, amount_paid):
-    # verify both inputs are type NUMBER
-    # if type(amount_owed) != "int" or type(amount_owed) != "float" or type(amount_paid) != "int" or type(amount_paid) != "float":
-    #     return "Invalid inputs - non-number passed to function"
- 
+
     # verify both inputs are greater than zero
 #change this to try except if I have time
 
@@ -28,7 +22,8 @@ def optimal_change(amount_owed, amount_paid):
 # If no change is DUE (AMOUNT_PAID = AMOUNT_OWED) it returns []
 # IF AMOUNT_PAID < AMOUNT_OWED it returns None
 # NOTE: I noticed rounding errors in floating point % floating point
-# so amount_owed and amount_paid are *100 so calculations are in integers
+# and floating point +- integer
+# so amount_owed and amount_paid are *100 so calculations are stritctly in integers
 
 def determine_change(amount_owed, amount_paid):
     # these amounts are all *100 from monetary amounts and represent
@@ -84,7 +79,7 @@ def print_change(change_list, amount_owed, amount_paid):
 
     for index, amount in enumerate(change_list):
         if amount > 0:
-            # multiple change amounts remain to append
+            # case more than 1 change amounts remain to append
             if check_non_zeros(change_list) > 1:
                 output_change_str += change_string(index, amount) + ", "
             # indicate no more change at the current denomination is owed
