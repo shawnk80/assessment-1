@@ -2,6 +2,7 @@ import unittest
 from optimal_change import optimal_change
 from optimal_change import determine_change
 from optimal_change import print_change
+from optimal_change import change_string
 
 class OptimalChangeTests(unittest.TestCase):
 
@@ -30,6 +31,21 @@ class OptimalChangeTests(unittest.TestCase):
         output = determine_change(100.00, 112.12)
         self.assertEqual(output, [0, 0, 0, 1, 0, 2, 0, 1, 0, 2])
 
+    def test_change_str(self):
+        output = change_string(9, 2)
+        self.assertEqual(output, "2 pennies")
+
+    def test_change_str2(self):
+        output = change_string(9, 1)
+        self.assertEqual(output, "1 penny")
+
+    def test_change_str3(self):
+        output = change_string(2, 3)
+        self.assertEqual(output, "3 $20 bills")
+
+    def test_change_str4(self):
+        output = change_string(2, 1)
+        self.assertEqual(output, "1 $20 bill")
 
 if __name__ == '__main__':
     unittest.main()
